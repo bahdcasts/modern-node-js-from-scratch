@@ -1,17 +1,18 @@
+const path = require('path')
 const express = require('express')
 
 const app = express()
 
 app.get('/', (request, response) => {
-  response.json({
-    name: 'kati frantz'
-  })
+  response.sendFile(path.resolve(__dirname, 'index.html'))
 })
 
 app.get('/about', (request, response) => {
-  response.send({
-    name: 'kati frantz'
-  })
+  response.sendFile(path.resolve(__dirname, 'about.html'))
+})
+
+app.get('/contact', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'contact.html'))
 })
 
 app.listen(3000, () => {
