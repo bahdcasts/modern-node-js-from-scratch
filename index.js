@@ -1,25 +1,19 @@
-const http = require('http')
-const fs = require('fs')
+const express = require('express')
 
-// NON BLOCKING
+const app = express()
 
-const aboutPage = fs.readFileSync('about.html')
-const contactPage = fs.readFileSync('contact.html')
-const homePage = fs.readFileSync('index.html')
-
-
-const server = http.createServer((request, response) => {
-  if (request.url === '/about') {
-    return response.end(aboutPage)
-  } else if (request.url === '/contact') {
-    return response.end(contactPage)
-  } else if (request.url === '/') {
-    return response.end(homePage)
-  } else {
-    response.writeHead(404)
-
-    response.end('THE PAGE WAS NOT FOUND.')
-  }
+app.get('/', (request, response) => {
+  response.json({
+    name: 'kati frantz'
+  })
 })
 
-server.listen(3000)
+app.get('/about', (request, response) => {
+  response.send({
+    name: 'kati frantz'
+  })
+})
+
+app.listen(3000, () => {
+  console.log('App listening on port 3000')
+})
