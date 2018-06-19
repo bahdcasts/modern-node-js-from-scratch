@@ -1,6 +1,8 @@
 const http = require('http')
 const fs = require('fs')
 
+// NON BLOCKING
+
 const aboutPage = fs.readFileSync('about.html')
 const contactPage = fs.readFileSync('contact.html')
 const homePage = fs.readFileSync('index.html')
